@@ -1,0 +1,2 @@
+eed:
+	$CC main.cpp -o edd
