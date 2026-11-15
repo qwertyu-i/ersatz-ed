@@ -1,2 +1,2 @@
 eed:
-	g++ main.cpp -o eed
+	g++ eed.cpp -o eed
