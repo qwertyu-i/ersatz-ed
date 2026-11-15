@@ -1,0 +1,15 @@
+ersatz ed (eed) - learning project of writing an ed-like editor in c++
+
+not intended to be made into a fullscreen editor like vim, emacs,
+notepad, etc, instead meant to run more similarly to a command
+interpreter for text editing, e.g (in the shell/command line):
+
+> eed textfile.txt # run eed, open file "textfile.txt"
+> 23 # prints line 23
+  this is the contents of line 23
+>
+
+please write all code by hand, this is a learning project, you can
+still ask ai questions just don't copy and paste
+
+should be it for now, happy hacking!
