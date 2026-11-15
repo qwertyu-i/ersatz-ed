@@ -36,15 +36,12 @@ bool isint(string s) {
 
 int main(int argc, char *argv[]) {
     vector<string> docbuf;
-    // col, row
-    int c = 0;
     int r = 0;
 
     unordered_map<string, function<void()>> cmds = {
 	// turn r and c to addresses later
-	{"a", [&docbuf, &r, &c](){
-	    string sub1 = docbuf[r].substr(0,c+1);
-	    string sub2 = docbuf[r].substr(c+1, docbuf[r].length()-1);
+	{"a", [&docbuf, &r](){
+	    string orig = docbuf[r];
 	    string input;
 	    string output;
 	    while (getline(cin,input)) {
@@ -54,7 +51,7 @@ int main(int argc, char *argv[]) {
 		    output += input;
 		}
 	    }
-	    docbuf[r] = sub1 + output + sub2;
+	    docbuf[r] = orig + output;
 	}},
 	// note for future: to get anything from docbuf you need to pass it
 	// by reference to lambda functions
@@ -71,10 +68,8 @@ int main(int argc, char *argv[]) {
 	    }
 	    out.close();
 	}},
-	{"i", [&docbuf, &r, &c](){
-	    cout << "on row " << r << endl;
-	    string sub1 = docbuf[r].substr(0,c);
-	    string sub2 = docbuf[r].substr(c, docbuf[r].length()-1);
+	{"i", [&docbuf, &r](){
+	    string orig = docbuf[r];
 	    string input;
 	    string output;
 	    while (getline(cin,input)) {
@@ -84,7 +79,7 @@ int main(int argc, char *argv[]) {
 		    output += input;
 		}
 	    }
-	    docbuf[r] = sub1 + output + sub2;
+	    docbuf[r] = output + orig;
 	}}
     };
 
@@ -116,8 +111,8 @@ int main(int argc, char *argv[]) {
 	if (!isint(tokens[0])) {
 	    execcmd(cmds,tokens.size(),tokens);
 	} else {
+	    // THIS IS UNSIGNED
 	    r = stoul(tokens[0]) - 1;
-	    cout << "cursor now on row " << r << endl;
 	    cout << docbuf[r] << endl;
 	}
     }
