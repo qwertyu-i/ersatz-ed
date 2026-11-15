@@ -12,4 +12,17 @@ interpreter for text editing, e.g (in the shell/command line):
 please write all code by hand, this is a learning project, you can
 still ask ai questions just don't copy and paste
 
+goals:
+- make an ed-like editor, mainly in being able to use regex to perform
+different actions, although may replicate structural regex from
+sam/plan9
+
+- keep it simple enough to be perfectly readable in a single file
+
+- building should only involve running make
+
+to build, run make with whatever options you want, though the makefile
+assumes you use gcc since my $CC is busted for some reason and im too
+lazy to fix it lol
+
 should be it for now, happy hacking!
