@@ -23,13 +23,13 @@ void execcmd(unordered_map<string, function<void()>> cmds, int argc, vector<stri
     if (cmds[argv[0]])
 	cmds[argv[0]]();
     else
-	cout << "?\n";
+	cout << "nocmd\n";
 }
 
 // cpp is dumb
 bool isint(string s) {
     for (int i = 0; i < s.length(); i++)
-	if (!isdigit(s[i]))
+	if (!(isdigit(s[i]) || s[i] == '-'))
 	    return false;
     return true;
 }
@@ -111,9 +111,13 @@ int main(int argc, char *argv[]) {
 	if (!isint(tokens[0])) {
 	    execcmd(cmds,tokens.size(),tokens);
 	} else {
-	    // THIS IS UNSIGNED
-	    r = stoul(tokens[0]) - 1;
-	    cout << docbuf[r] << endl;
+            int n = (stol(tokens[0]) > 0) ?
+                stol(tokens[0]) - 1:
+                stol(tokens[0]);
+            string output = (abs(n) < docbuf.size()) ?
+                docbuf.at((docbuf.size() + n) % docbuf.size()) :
+                "noln\n";
+            cout << output << endl;
 	}
     }
     
