@@ -114,8 +114,9 @@ int main(int argc, char *argv[]) {
             int n = (stol(tokens[0]) > 0) ?
                 stol(tokens[0]) - 1:
                 stol(tokens[0]);
+	    r = (docbuf.size() + n) % docbuf.size();
             string output = (abs(n) < docbuf.size()) ?
-                docbuf.at((docbuf.size() + n) % docbuf.size()) :
+                docbuf.at(r) :
                 "noln\n";
             cout << output << endl;
         }
