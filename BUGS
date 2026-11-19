@@ -1,0 +1,1 @@
+a doesn't append and also replaces letters when working with a large file, may be caused at least partially by the modulo operation when looking for lines
