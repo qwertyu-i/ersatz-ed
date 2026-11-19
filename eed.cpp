@@ -45,11 +45,11 @@ int main(int argc, char *argv[]) {
             string input;
             string output;
             while (getline(cin,input)) {
-            if (input == ".")
-                break;
-            else {
-                output += input;
-            }
+            	if (input == ".")
+            	    break;
+            	else {
+            	    output += input;
+            	}
             }
             docbuf[r] = orig + output;
         }},
@@ -59,12 +59,12 @@ int main(int argc, char *argv[]) {
         {"w", [argc, argv, &docbuf](){
             ofstream out(argv[argc-1]);
             if (!out.is_open()) {
-            cerr << "no";
-            return;
+            	cerr << "no";
+            	return;
             }
             out.seekp(0);
             for (int i = 0; i < docbuf.size(); i++) {
-            out << docbuf.at(i) << endl;
+	      out << docbuf.at(i) << endl;
             }
             out.close();
         }},
@@ -73,11 +73,11 @@ int main(int argc, char *argv[]) {
             string input;
             string output;
             while (getline(cin,input)) {
-            if (input == ".")
-                break;
-            else {
-                output += input;
-            }
+            	if (input == ".")
+            	    break;
+            	else {
+            	    output += input;
+            	}
             }
             docbuf[r] = output + orig;
         }}
