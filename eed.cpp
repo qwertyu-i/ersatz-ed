@@ -51,7 +51,13 @@ int main(int argc, char *argv[]) {
             	    output += input;
             	}
             }
-            docbuf[r] = orig + output;
+            if (orig.ends_with("\r")) { //strip carriage return
+                orig.pop_back();
+                docbuf[r] = orig + output + "\r";
+            } else {
+                docbuf[r] = orig + output;
+            }
+
         }},
         // note for future: to get anything from docbuf you need to pass it
         // by reference to lambda functions
